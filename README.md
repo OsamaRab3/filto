@@ -13,9 +13,10 @@
     <a href="#license">License</a>
   </p>
   
-  [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/OsamaRab3/filto)
+  [![GitHub release (latest by date)](https://img.shields.io/github/v/release/OsamaRab3/filto?color=blue)](https://github.com/OsamaRab3/filto/releases/latest)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+  [![GitHub issues](https://img.shields.io/github/issues/OsamaRab3/filto?color=blue&label=issues)](https://github.com/OsamaRab3/filto/issues)
+  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/OsamaRab3/filto/pulls)
 </div>
 
 ## Features
