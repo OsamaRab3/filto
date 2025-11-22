@@ -8,17 +8,29 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      checks: write
+      statuses: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
       - name: Check if version already exists
         id: version-check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           package_version=$(node -p "require('./package.json').version")
-          exists=$(gh api repos/${{ github.repository }}/releases/tags/v$package_version >/dev/null 2>&1 && echo "true" || echo "")
+          exists=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+                     -H "Accept: application/vnd.github.v3+json" \
+                     "https://api.github.com/repos/${{ github.repository }}/releases/tags/v$package_version" \
+                     | jq -r .message)
 
-          if [ -n "$exists" ];
-          then
+          if [ "$exists" != "Not Found" ]; then
             echo "Version v$package_version already exists"
             echo "::warning file=package.json,line=1::Version v$package_version already exists - no release will be created. If you want to create a new release, please update the version in package.json and push again."
             echo "skipped=true" >> $GITHUB_OUTPUT
@@ -27,8 +39,6 @@ jobs:
             echo "skipped=false" >> $GITHUB_OUTPUT
             echo "tag=v$package_version" >> $GITHUB_OUTPUT
           fi
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Setup git
         if: ${{ steps.version-check.outputs.skipped == 'false' }}
         run: |
@@ -51,12 +61,20 @@ jobs:
             git pull --rebase
             git push origin ${{ github.ref_name }}
           fi
-      - name: Create Github Release
-        uses: ncipollo/release-action@2c591bcc8ecdcd2db72b97d6147f871fcd833ba5
+      - name: Create GitHub Release
         if: ${{ steps.version-check.outputs.skipped == 'false' }}
-        with:
-          name: ${{ steps.version-check.outputs.tag }}
-          tag: ${{ steps.version-check.outputs.tag }}
-          commit: ${{ github.ref_name }}
-          token: ${{ secrets.GH_TOKEN }}
-          skipIfReleaseExists: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/releases \
+            -d '{
+              "tag_name": "${{ steps.version-check.outputs.tag }}",
+              "target_commitish": "${{ github.ref_name }}",
+              "name": "${{ steps.version-check.outputs.tag }}",
+              "body": "Release ${{ steps.version-check.outputs.tag }}",
+              "draft": false,
+              "prerelease": false
+            }'
