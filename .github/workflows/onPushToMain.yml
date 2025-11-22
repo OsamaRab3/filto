@@ -32,8 +32,8 @@ jobs:
       - name: Setup git
         if: ${{ steps.version-check.outputs.skipped == 'false' }}
         run: |
-          git config --global user.email ${{ secrets.GH_EMAIL }}
-          git config --global user.name ${{ secrets.GH_USERNAME }}
+          git config --global user.email "${{ secrets.GH_EMAIL || 'osrab3@gmail.com' }}"
+          git config --global user.name "${{ secrets.GH_USERNAME || 'OsamaRab3' }}"
       - name: Generate oclif README
         if: ${{ steps.version-check.outputs.skipped == 'false' }}
         id: oclif-readme
