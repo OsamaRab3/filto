@@ -32,6 +32,9 @@
 - **Images** → PDF
 - **PDF** → Word (DOCX)
 - **PowerPoint** → PDF
+- **Excel** → PDF
+- **PDF** → Images
+- **HTML** → PDF
 - **Merge** multiple PDFs into one
 - **Split** PDFs into specific page ranges
 - **Compress** PDFs to smaller sizes
@@ -57,11 +60,26 @@
 filto [OPTIONS] COMMAND [ARGS]...
 ```
 
-### Basic Commands
+## Basic Commands
+### 1. convert Images to PDF
+convert single or multiple images to PDF file
 
+**Single Image:**
+```
+filto convert image.png output.pdf
+```
+**Multiple Images:**
 
-##  Examples
+if you have a multiple image put in folder then run 
 
+**Using glob pattern**
+```
+filto convert images/*.{jpg,png} output.pdf
+```
+**Or list files individually**
+```
+filto convert image1.jpg image2.png output.pdf
+```
 
 
 ## Contributing
