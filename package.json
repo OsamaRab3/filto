@@ -1,7 +1,7 @@
 {
   "name": "filto",
   "description": "A fast, lightweight, and developer-friendly CLI tool for converting files with a single command",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "author": {
     "name": "OsamaRab3",
     "email": "osama.rab3a@gmail.com",
