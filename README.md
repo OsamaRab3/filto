@@ -34,6 +34,7 @@
 - **PDF** → Word (DOCX)
 - **PDF** → PowerPoint (PPTX)
 - **PDF** → Images (JPG)
+- **PDF Info** → Display metadata (title, creator, page count, file size)
 
 #### Coming Soon
 - PowerPoint → PDF
@@ -86,7 +87,7 @@ filto convert <input> <output>
 
 ## Basic Commands
 ### 1. Convert Images to PDF
-convert single or multiple images to PDF file
+Convert single or multiple images to PDF file
 
 **Single Image:**
 ```
@@ -118,6 +119,20 @@ filto convert input.pdf out.pptx
 filto convert input.pdf output.jpg
 ```
 
+---
+### 2. Get PDF Information
+Display information about a PDF file
+
+**Show specific information (use any combination of flags):**
+```
+filto info input.pdf -t -c -n -z
+```
+
+**Flags:**
+- `-t, --title`: Show document title
+- `-c, --creator`: Show document creator
+- `-n, --pages`: Show number of pages
+- `-z, --size`: Show file size
 
 ## Contributing
 
