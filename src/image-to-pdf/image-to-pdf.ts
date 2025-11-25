@@ -3,14 +3,9 @@ import * as imageToPDFModule from 'image-to-pdf';
 // const imageToPDF = (imageToPDFModule as any).default || imageToPDFModule;
 import { sizes } from 'image-to-pdf';
 import fs from 'fs';
+import ConversionResult from '../types/converstionResult.js';
 
-interface ConversionResult {
-  success: boolean;
-  message: string;
-  error?: Error;
-}
-
-export async function convertImagesToPDF(inputImages:string[], outputPDF:string): Promise<ConversionResult>  {
+export async function convertImagesToPDF(inputImages: string[], outputPDF: string): Promise<ConversionResult> {
   return new Promise((resolve) => {
     try {
       const pdfStream = imageToPDF(inputImages, sizes.A4);
@@ -25,7 +20,7 @@ export async function convertImagesToPDF(inputImages:string[], outputPDF:string)
         });
       });
 
-      writeStream.on('error', (err:Error) => {
+      writeStream.on('error', (err: Error) => {
         resolve({
           success: false,
           message: `Error writing file: ${err.message}`,
@@ -33,7 +28,7 @@ export async function convertImagesToPDF(inputImages:string[], outputPDF:string)
         });
       });
 
-      pdfStream.on('error', (err:Error) => {
+      pdfStream.on('error', (err: Error) => {
         resolve({
           success: false,
           message: `Conversion error: ${err.message}`,
