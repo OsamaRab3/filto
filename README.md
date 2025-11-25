@@ -34,6 +34,7 @@
 - **PDF** → Word (DOCX)
 - **PDF** → PowerPoint (PPTX)
 - **PDF** → Images (JPG)
+- **PDF** → Text (TXT) - Extract text content from PDF files
 - **PDF Info** → Display metadata (title, creator, page count, file size)
 
 #### Coming Soon
@@ -134,6 +135,30 @@ filto info input.pdf -t -c -n -z
 - `-n, --pages`: Show number of pages
 - `-z, --size`: Show file size
 
+---
+### 3. Extract Text from PDF
+Extract text content from PDF files
+
+**Basic extraction:**
+```
+filto extract input.pdf
+```
+
+**Extract from specific page:**
+```
+filto extract input.pdf -p 1
+```
+
+**Save to output file:**
+```
+filto extract input.pdf -o extracted.txt
+```
+
+**Extract from specific page and save to file:**
+```
+filto extract input.pdf --page 1 --output page1.txt
+```
+---
 ## Contributing
 
 Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on how to contribute to this project.
