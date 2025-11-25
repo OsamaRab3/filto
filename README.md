@@ -2,7 +2,7 @@
   <img src="./logo.svg" alt="Filto" width="200"/>
   <h1>Filto</h1>
   <p>
-    <strong>Fast, lightweight, and privacy-focused CLI tool for file conversion</strong>
+    <strong>⚡ Fast, lightweight, and privacy-focused CLI tool for file conversion</strong>
   </p>
   <p>
     <a href="#features">Features</a> •
@@ -29,36 +29,59 @@
 
 ### Supported Conversions
 
-- **Images** → PDF
+#### Currently Available
+- **Images** → PDF (supports PNG, JPG)
 - **PDF** → Word (DOCX)
 - **PDF** → PowerPoint (PPTX)
-- **PDF** → Images
-- **PowerPoint** → PDF
-- **Excel** → PDF
-- **HTML** → PDF
-- **Merge** multiple PDFs into one
-- **Split** PDFs into specific page ranges
-- **Compress** PDFs to smaller sizes
-- **Extract** text or images from PDFs
-- **Convert** between various document formats
+- **PDF** → Images (JPG)
+
+#### Coming Soon
+- PowerPoint → PDF
+- Excel → PDF
+- HTML → PDF
+- Merge multiple PDFs
+- PDF compression
+- PDF text extraction
 
 ## Installation
+### Quick Install 
+Install Filto using npm:
 
-
-### Quick Install
 ```bash
+npm install filto
+```
 
+### Verify Installation
+```bash
+filto --version
 ```
 
 ### From Source
+1. Clone the repository:
 ```bash
-
+git clone https://github.com/OsamaRab3/filto.git
+cd filto
 ```
 
-##  Usage
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Build the project:
+```bash
+npm run build
+```
+
+4. Link it globally:
+```bash
+npm link
+```
+
+## Usage
 
 ```
-filto [OPTIONS] COMMAND [ARGS]...
+filto convert <input> <output>
 ```
 
 ## Basic Commands
