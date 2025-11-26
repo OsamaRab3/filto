@@ -36,12 +36,12 @@
 - **PDF** → Images (JPG)
 - **PDF** → Text (TXT) - Extract text content from PDF files
 - **PDF Info** → Display metadata (title, creator, page count, file size)
+- Merge multiple PDFs
 
 #### Coming Soon
 - PowerPoint → PDF
 - Excel → PDF
 - HTML → PDF
-- Merge multiple PDFs
 - PDF compression
 - PDF text extraction
 
@@ -158,6 +158,22 @@ filto extract input.pdf -o extracted.txt
 ```
 filto extract input.pdf --page 1 --output page1.txt
 ```
+---
+### 5. Merge PDF Files
+Merge multiple PDF files into a single PDF
+
+**Basic usage:**
+```
+filto merge file1.pdf file2.pdf output.pdf
+```
+
+**Example with multiple files:**
+```
+filto merge doc1.pdf doc2.pdf doc3.pdf merged_output.pdf
+```
+
+> **Note:** You need to provide at least two PDF files to merge. The last argument will be used as the output file.
+
 ---
 ## Contributing
 
