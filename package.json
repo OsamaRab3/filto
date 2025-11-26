@@ -17,6 +17,7 @@
     "@oclif/plugin-plugins": "^5",
     "asposepdfnodejs": "^25.10.0",
     "image-to-pdf": "^3.0.2",
+    "pdf-lib": "^1.17.1",
     "pdf-parse": "^2.4.5",
     "rewiremock": "^3.14.6"
   },
