@@ -31,6 +31,7 @@
 
 #### Currently Available
 - **Images** → PDF (supports PNG, JPG)
+- **Images** → Text (TXT) - Extract text from images using OCR
 - **PDF** → Word (DOCX)
 - **PDF** → PowerPoint (PPTX)
 - **PDF** → Images (JPG)
@@ -46,6 +47,15 @@
 - PDF text extraction
 
 ## Installation
+
+### Prerequisites
+
+#### Tesseract OCR Installation
+Filto uses Tesseract OCR for text extraction from images. You'll need to install Tesseract on your system first.
+
+> For more detailed installation instructions and additional language packs, please refer to the [Tesseract documentation](https://github.com/tesseract-ocr/tessdoc/blob/main/Installation.md).
+
+---
 ### Quick Install 
 Install Filto using npm:
 
@@ -159,7 +169,23 @@ filto extract input.pdf -o extracted.txt
 filto extract input.pdf --page 1 --output page1.txt
 ```
 ---
-### 5. Merge PDF Files
+
+### 5. Extract Text from Images (OCR)
+Extract text from images using OCR. Supports multiple languages.
+
+```bash
+# Basic usage
+filto ocr image.png -l eng -o output.txt
+```
+#### Specify language (e.g., for Arabic text)
+```
+filto ocr documento.png -l ara -o texto_extraido.txt
+```
+
+**Note:** The `-l` or `--language` flag is required. Common language codes: `eng` (English), `ara` (Arabic), `fra` (French), `deu` (German), etc.
+
+---
+### 6. Merge PDF Files
 Merge multiple PDF files into a single PDF
 
 **Basic usage:**
